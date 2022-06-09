@@ -11,24 +11,25 @@ import { store } from "../store/store";
 import {
   selectAge,
   selectHeight,
+  selectIsMale,
   selectWeight,
   setAge,
+  setIsMale,
   setWeight,
 } from "../store/bmiSlice";
+import { useSelector } from "react-redux";
 
 function InputScreen({ navigation }) {
-  const [male, setMale] = useState(true);
-  const [female, setFemale] = useState(false);
+  const isMale = useSelector(selectIsMale);
 
   const onPressGenderButton = () => {
-    setMale(!male);
-    setFemale(!female);
+    store.dispatch(setIsMale(!isMale));
     Haptics.selectionAsync();
   };
 
   const onPressResultsHandler = () => {
     navigation.navigate("Results", {
-      sex: male ? "male" : "female",
+      sex: isMale ? "male" : "female",
       age: store.getState().bmi.age,
       weight: store.getState().bmi.weight,
       height: store.getState().bmi.height,
@@ -43,13 +44,13 @@ function InputScreen({ navigation }) {
           <HighlightedSelection
             width={config.cardWidth}
             onPress={onPressGenderButton}
-            activated={male}
+            activated={isMale}
             text="Male"
           />
           <HighlightedSelection
             width={config.cardWidth}
             onPress={onPressGenderButton}
-            activated={female}
+            activated={!isMale}
             text="Female"
           />
         </View>
