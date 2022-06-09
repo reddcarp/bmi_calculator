@@ -10,7 +10,6 @@ import VerticalSlider from "../components/VerticalSlider";
 import { store } from "../store/store";
 import {
   selectAge,
-  selectHeight,
   selectIsMale,
   selectWeight,
   setAge,
@@ -68,6 +67,7 @@ function InputScreen({ navigation }) {
               title="Weight"
               valueDispatch={setWeight}
               valueSelector={selectWeight}
+              valueName="weight"
               min={5}
               max={500}
             />
@@ -75,6 +75,7 @@ function InputScreen({ navigation }) {
               title="Age"
               valueDispatch={setAge}
               valueSelector={selectAge}
+              valueName="age"
               min={20}
               max={100}
             />
