@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "bmiTest",
-    "slug": "bmiTest",
+    "name": "bmi Calculator",
+    "slug": "bmi_calculator",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./app/assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./app/assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,12 +21,13 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./app/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./app/assets/favicon.png"
+    },
+    "description": "Made by Marvin Libam (marvin.libam@gmail.com), based on a design by Kevin Al-Rizal at https://dribbble.com/shots/11368106-BMI-Calculator-App-Neumorphism."
   }
 }
