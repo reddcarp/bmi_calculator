@@ -8,6 +8,11 @@ function NeuCircleProgress({ value, min, max, size = 220 }) {
   const borderSize = 35;
   const innerSize = size - borderSize * 2;
 
+  const spaceBetweenVlues = max - min;
+  const normalizedValue = value - min;
+  var percentagedValue = (normalizedValue * 100) / spaceBetweenVlues;
+  if (percentagedValue == 0) percentagedValue = 1;
+
   return (
     <NeuView
       color={config.colors.background}
@@ -32,11 +37,15 @@ function NeuCircleProgress({ value, min, max, size = 220 }) {
             progressValueColor={config.colors.black}
             activeStrokeWidth={borderSize / 2}
             inActiveStrokeWidth={borderSize / 2}
-            maxValue={max}
+            maxValue={100}
             inActiveStrokeColor={"#d5dee3"}
             fontSize={50}
-            duration={1800}
-            value={value}
+            titleColor={config.colors.darkGrey}
+            allowFontScalings
+            showProgressValue={false}
+            title={value.toFixed(1)}
+            duration={1000}
+            value={percentagedValue}
             radius={size / 2 - borderSize / 2}
             activeStrokeColor={config.colors.accentDark}
             activeStrokeSecondaryColor={config.colors.accentLight}

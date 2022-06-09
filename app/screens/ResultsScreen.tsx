@@ -67,18 +67,43 @@ import NeuCircleProgress from "../components/NeuCircleProgress";
  * =============
  */
 
-const WeightCategoryText = [
-  "Underweight",
-  "Healthy",
-  "Overweight",
-  "Obese",
-  "Severely Obese",
-];
-
 const underweightLimit = 18.5;
 const healthyLimit = 25;
 const overweightLimit = 30;
 const obeseLimit = 40;
+
+interface WEIGHT_CATEGORY_TYPE {
+  maxBMI: number;
+  minBMI: number;
+  weightCategory: String;
+}
+
+// The weights categories
+const UNDERWEIGHT: WEIGHT_CATEGORY_TYPE = {
+  maxBMI: underweightLimit,
+  minBMI: 0,
+  weightCategory: "Underweight",
+};
+const HEALTHY: WEIGHT_CATEGORY_TYPE = {
+  maxBMI: healthyLimit,
+  minBMI: underweightLimit,
+  weightCategory: "Healthy",
+};
+const OVERWEIGHT: WEIGHT_CATEGORY_TYPE = {
+  maxBMI: overweightLimit,
+  minBMI: healthyLimit,
+  weightCategory: "Overweight",
+};
+const OBESE: WEIGHT_CATEGORY_TYPE = {
+  maxBMI: obeseLimit,
+  minBMI: overweightLimit,
+  weightCategory: "Obese",
+};
+const SEVERELY_OBESE: WEIGHT_CATEGORY_TYPE = {
+  maxBMI: 100,
+  minBMI: obeseLimit,
+  weightCategory: "Severely Obese",
+};
 
 /*
  * The BMI calculations are based on the USC units (USA)
@@ -96,11 +121,11 @@ function ResultsScreen({ route, navigation }) {
   };
 
   const WeightCategoryFromBMI = (bmi) => {
-    if (bmi < underweightLimit) return config.AppEnum.Underweight;
-    else if (bmi < healthyLimit) return config.AppEnum.Healthy;
-    else if (bmi < overweightLimit) return config.AppEnum.OverWeight;
-    else if (bmi < obeseLimit) return config.AppEnum.Obese;
-    else return config.AppEnum.SeverelyObese;
+    if (bmi < underweightLimit) return UNDERWEIGHT;
+    else if (bmi < healthyLimit) return HEALTHY;
+    else if (bmi < overweightLimit) return OVERWEIGHT;
+    else if (bmi < obeseLimit) return OBESE;
+    else return SEVERELY_OBESE;
   };
 
   const WeightCategoryFromPercentile = (percentile) => {
@@ -116,7 +141,7 @@ function ResultsScreen({ route, navigation }) {
   };
 
   const bmi = BMICalculation();
-  const weightCategory = WeightCategoryFromBMI(bmi);
+  const weight_category: WEIGHT_CATEGORY_TYPE = WeightCategoryFromBMI(bmi);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -127,12 +152,17 @@ function ResultsScreen({ route, navigation }) {
           onPressLeftIcon={onPressLeftIconHandler}
         />
         <View style={styles.centerContainer}>
-          <NeuCircleProgress max={50} min={40} size={240} value={bmi} />
+          <NeuCircleProgress
+            max={weight_category.maxBMI}
+            min={weight_category.minBMI}
+            size={240}
+            value={bmi}
+          />
           <View style={{ marginTop: 30 }}>
             <Text style={config.title}>
               You are{" "}
               <Text style={{ color: config.colors.accentDark }}>
-                {WeightCategoryText[weightCategory]}
+                {weight_category.weightCategory}
               </Text>{" "}
               !
             </Text>
