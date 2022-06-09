@@ -69,8 +69,8 @@ function InputScreen({ navigation }) {
               title="Age"
               value={age}
               setValue={setAge}
-              min={2}
-              max={125}
+              min={20}
+              max={100}
             />
           </View>
         </View>

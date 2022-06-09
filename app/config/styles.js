@@ -9,7 +9,7 @@ var innerContainerWidth = screenWidth - innerContainerPadding * 2;
 
 var screenHeightToCardHeight = 0.24;
 
-var cardHeight = screenHeight * screenHeightToCardHeight; //215;
+var cardHeight = screenHeight * screenHeightToCardHeight;
 var cardHeightToWidthRatio = 0.75;
 var cardHeightToButtonRatio = 0.22;
 var cardButtonWidth = cardHeight * cardHeightToButtonRatio;

@@ -1,13 +1,11 @@
-import { useState } from "react";
 import { StyleSheet, Text, SafeAreaView, View } from "react-native";
 import * as Haptics from "expo-haptics";
+import * as WebBrowser from "expo-web-browser";
 
 import Header from "../components/Header";
-import HighlightedSelection from "../components/HighlightedSelection";
-import VariationCard from "../components/VariationCard";
 import config from "../config/styles";
-import VerticalSlider from "../components/VerticalSlider";
 import NeuCircleProgress from "../components/NeuCircleProgress";
+import AppNeuButton from "../components/AppNeuButton";
 
 /*
  *  BMI Weight Status - based on the CDC data (USA)
@@ -128,6 +126,10 @@ function ResultsScreen({ route, navigation }) {
     else return SEVERELY_OBESE;
   };
 
+  /*
+   * Not utilized for now
+   *
+   */
   const WeightCategoryFromPercentile = (percentile) => {
     if (percentile < config.AppEnum.UnderweightPercentileLimit)
       return config.AppEnum.Underweight;
@@ -142,6 +144,12 @@ function ResultsScreen({ route, navigation }) {
 
   const bmi = BMICalculation();
   const weight_category: WEIGHT_CATEGORY_TYPE = WeightCategoryFromBMI(bmi);
+
+  const onPressDetails = () => {
+    WebBrowser.openBrowserAsync(
+      "https://www.cdc.gov/healthyweight/assessing/bmi/index.html"
+    );
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -168,6 +176,12 @@ function ResultsScreen({ route, navigation }) {
             </Text>
           </View>
         </View>
+        <AppNeuButton
+          width={config.cardWidth}
+          onPress={onPressDetails}
+          text="Details"
+          style={styles.bottomButton}
+        />
       </View>
     </SafeAreaView>
   );
@@ -188,6 +202,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     marginTop: 90,
+  },
+  bottomButton: {
+    alignSelf: "center",
   },
 });
 
