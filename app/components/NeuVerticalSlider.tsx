@@ -18,12 +18,14 @@ import { store } from "../store/store";
 import { setHeight } from "../store/bmiSlice";
 
 const circleDiameter = 35;
+const minValue = 100;
+const maxValue = 220;
 
 class Slider extends React.Component {
   state = {
-    min: 100,
-    max: 220,
-    barHeight: 280,
+    min: minValue,
+    max: maxValue,
+    barHeight: config.sliderHeight,
     deltaValue: 0,
     value: store.getState().bmi.height,
   };
@@ -157,7 +159,7 @@ function Bar({ height }) {
     <Animated.View style={[styles.gradientContainer, { height: height }]}>
       <LinearGradient
         colors={[config.colors.accentDark, config.colors.accentLight]}
-        style={{ width: 15, height: 280 }}
+        style={{ width: 15, height: config.sliderHeight }}
         start={{
           x: 0,
           y: 0,
@@ -182,7 +184,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   barContainer: {
-    height: 280,
+    height: config.sliderHeight,
     width: 35,
     flexDirection: "row",
     justifyContent: "center",

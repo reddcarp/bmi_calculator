@@ -10,17 +10,19 @@ var innerContainerWidth = screenWidth - innerContainerPadding * 2;
 var screenHeightToCardHeight = 0.24;
 
 var cardHeight = screenHeight * screenHeightToCardHeight;
-var cardHeightToWidthRatio = 0.75;
 var cardHeightToButtonRatio = 0.22;
+var screenWidthTocardWidthRatio = 0.39;
 var cardButtonWidth = cardHeight * cardHeightToButtonRatio;
 var cardIconSize = cardButtonWidth / 2;
-var cardWidth = cardHeight * cardHeightToWidthRatio;
+var cardWidth = screenWidth * screenWidthTocardWidthRatio;
 
 var cardSpaceBetween = innerContainerWidth - cardWidth * 2;
 var cardContainerHeight = 2 * cardHeight + cardSpaceBetween;
 var cardContainerWidth = 2 * cardWidth + cardSpaceBetween;
 
 var highligtedButtonHeight = cardHeight / 3.9;
+
+var sliderHeight = cardHeight + cardSpaceBetween + cardButtonWidth;
 
 export default {
   colors,
@@ -51,4 +53,5 @@ export default {
   screenWidth,
   innerContainerPadding,
   highligtedButtonHeight,
+  sliderHeight,
 };
