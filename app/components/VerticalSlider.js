@@ -1,10 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 import { NeuButton, NeuView } from "react-native-neu-element";
+import { useSelector } from "react-redux";
 
 import config from "../config/styles";
-import NeuVerticalSlider from "./NeuVerticalSlider";
+import { selectHeight } from "../store/bmiSlice";
+import Slider from "./NeuVerticalSlider";
 
-function VerticalSlider({ title, value, setValue }) {
+function VerticalSlider({ title }) {
   return (
     <NeuView
       color={config.colors.background}
@@ -14,16 +16,7 @@ function VerticalSlider({ title, value, setValue }) {
       containerStyle={styles.card}
     >
       <Text style={config.subTitle}>{title}</Text>
-      <Text style={config.cardText}>{value}</Text>
-      <View
-        style={{
-          alignSelf: "stretch",
-          flexDirection: "row",
-          justifyContent: "center",
-        }}
-      >
-        <NeuVerticalSlider setValue={setValue} />
-      </View>
+      <Slider />
     </NeuView>
   );
 }

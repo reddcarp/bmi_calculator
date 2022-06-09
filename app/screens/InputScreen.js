@@ -7,9 +7,9 @@ import HighlightedSelection from "../components/HighlightedSelection";
 import VariationCard from "../components/VariationCard";
 import config from "../config/styles";
 import VerticalSlider from "../components/VerticalSlider";
+import { store } from "../store/store";
 
 function InputScreen({ navigation }) {
-  const [height, setHeight] = useState(150);
   const [weight, setWeight] = useState(70);
   const [age, setAge] = useState(25);
   const [male, setMale] = useState(true);
@@ -26,7 +26,7 @@ function InputScreen({ navigation }) {
       sex: male ? "male" : "female",
       age: age,
       weight: weight,
-      height: height,
+      height: store.getState().bmi.height,
     });
   };
 
@@ -56,7 +56,7 @@ function InputScreen({ navigation }) {
             flexDirection: "row",
           }}
         >
-          <VerticalSlider title="Height" value={height} setValue={setHeight} />
+          <VerticalSlider title="Height" />
           <View style={styles.cardContainer}>
             <VariationCard
               title="Weight"
