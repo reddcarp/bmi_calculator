@@ -8,10 +8,15 @@ import VariationCard from "../components/VariationCard";
 import config from "../config/styles";
 import VerticalSlider from "../components/VerticalSlider";
 import { store } from "../store/store";
+import {
+  selectAge,
+  selectHeight,
+  selectWeight,
+  setAge,
+  setWeight,
+} from "../store/bmiSlice";
 
 function InputScreen({ navigation }) {
-  const [weight, setWeight] = useState(70);
-  const [age, setAge] = useState(25);
   const [male, setMale] = useState(true);
   const [female, setFemale] = useState(false);
 
@@ -24,8 +29,8 @@ function InputScreen({ navigation }) {
   const onPressResultsHandler = () => {
     navigation.navigate("Results", {
       sex: male ? "male" : "female",
-      age: age,
-      weight: weight,
+      age: store.getState().bmi.age,
+      weight: store.getState().bmi.weight,
       height: store.getState().bmi.height,
     });
   };
@@ -60,15 +65,15 @@ function InputScreen({ navigation }) {
           <View style={styles.cardContainer}>
             <VariationCard
               title="Weight"
-              value={weight}
-              setValue={setWeight}
+              valueDispatch={setWeight}
+              valueSelector={selectWeight}
               min={5}
               max={500}
             />
             <VariationCard
               title="Age"
-              value={age}
-              setValue={setAge}
+              valueDispatch={setAge}
+              valueSelector={selectAge}
               min={20}
               max={100}
             />

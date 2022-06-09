@@ -4,19 +4,22 @@ import { Feather } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
 
 import config from "../config/styles";
+import { useSelector } from "react-redux";
+import { store } from "../store/store";
 
-function VariationCard({ title, value, setValue, max, min }) {
+function VariationCard({ title, valueSelector, valueDispatch, max, min }) {
   var timer;
+  const value = useSelector(valueSelector);
 
   const onPressPlusButtonHandler = () => {
     if (value == max) return;
-    setValue(value + 1);
+    store.dispatch(valueDispatch(value + 1));
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
   };
 
   const onPressMinusButtonHandler = () => {
     if (value == min) return;
-    setValue(value - 1);
+    store.dispatch(valueDispatch(value - 1));
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
   };
 

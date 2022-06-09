@@ -4,7 +4,7 @@ const bmiSlice = createSlice({
   name: "bmi",
   initialState: {
     height: 180,
-    weight: 60,
+    weight: 70,
     age: 21,
     gender: "Male",
   },
