@@ -8,7 +8,7 @@
     "splash": {
       "image": "./app/assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#eef2f9"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,12 +22,12 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#eef2f9"
       }
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
     },
-    "description": "Made by Marvin Libam (marvin.libam@gmail.com), based on a design by Kevin Al-Rizal at https://dribbble.com/shots/11368106-BMI-Calculator-App-Neumorphism."
+    "description": "/!\\ Works only for iPhones /!\\\n\nMade by Marvin Libam (marvin.libam@gmail.com), based on a design by Kevin Al-Rizal at https://dribbble.com/shots/11368106-BMI-Calculator-App-Neumorphism."
   }
 }
