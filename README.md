@@ -2,7 +2,7 @@
 
 ## Using the app
 
-1. Download "Expo Go" app on your iPhone.
+1. Download the "Expo Go" app on your iPhone.
 2. Clone the repository.
 3. Install Expo CLI.
    `npm install --global expo-cli`
