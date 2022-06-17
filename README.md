@@ -1,6 +1,6 @@
 # bmi_calculator
 
-## Using the app
+## Using the app (iPhone only)
 
 1. Download the "Expo Go" app on your iPhone.
 2. Clone the repository.
